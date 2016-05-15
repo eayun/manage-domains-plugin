@@ -43,7 +43,10 @@ cp engine-manage-domains.service %{buildroot}/usr/lib/systemd/system
 cp engine-manage-domains.xml %{buildroot}/etc/engine-manage-domains/
 cp engine-manage-domains-setup %{buildroot}/usr/sbin/
 touch %{buildroot}/etc/engine-manage-domains/mgmt-users.properties
+touch %{buildroot}/etc/engine-manage-domains/mgmt-groups.properties
 touch %{buildroot}/etc/engine-manage-domains/application-users.properties
+touch %{buildroot}/etc/engine-manage-domains/application-roles.properties
+
 
 %post
 chkconfig --add engine-manage-domains
