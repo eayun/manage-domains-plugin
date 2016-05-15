@@ -48,9 +48,6 @@ touch %{buildroot}/etc/engine-manage-domains/application-users.properties
 touch %{buildroot}/etc/engine-manage-domains/application-roles.properties
 
 
-%post
-chkconfig --add engine-manage-domains
-
 %clean
 rm -rf %{buildroot}
 
