@@ -9,9 +9,9 @@ Get_IP(){
 
 Configuration_System_Service(){
    echo "Restarting httpd"
-   /etc/init.d/httpd restart
+   systemctl restart httpd
    echo "Staring service..."
-   /etc/rc.d/init.d/engine-manage-domains start
+   systemctl start engine-manage-domains
    chkconfig engine-manage-domains on
 }
 

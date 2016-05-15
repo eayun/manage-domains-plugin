@@ -1,0 +1,13 @@
+[Unit]
+Description=engine-manage-domains
+After=ovirt-engine.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -server -XX:+TieredCompilation -Xms256m -Xmx512m -XX:PermSize=256m -XX:MaxPermSize=256m -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djava.awt.headless=true -Djava.util.logging.manager=org.jboss.logmanager -Dorg.jboss.resolver.warning=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djboss.modules.write-indexes=false -Djboss.server.default.config=engine-manage-domains -Djboss.home.dir=/usr/share/ovirt-engine-wildfly -Djboss.server.base.dir=/usr/share/engine-manage-domains -Djboss.server.log.dir=/var/log/engine-manage-domains -Djboss.server.config.dir=/etc/engine-manage-domains -jar /usr/share/ovirt-engine-wildfly/jboss-modules.jar -mp /usr/share/ovirt-engine-wildfly/modules:/var/lib/ovirt-engine/jboss_runtime/modules/01-modules-common -jaxpmodule javax.xml.jaxp-provider org.jboss.as.standalone -c engine-manage-domains.xml
+Restart=on-abort
+SyslogIdentifier=engine-manage-domains
+
+
+[Install]
+WantedBy=multi-user.target
