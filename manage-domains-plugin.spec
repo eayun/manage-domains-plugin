@@ -25,6 +25,8 @@ You can use it to management the engine domain.
 
 
 %build
+cd Servlet/engine-manage-domains
+mvn clean package war:war
 
 
 %install
