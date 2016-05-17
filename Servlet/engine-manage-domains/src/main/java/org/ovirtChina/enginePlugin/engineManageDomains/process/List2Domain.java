@@ -58,6 +58,9 @@ public class List2Domain {
   * @return        value on the line
   */
   private String processLine(String aLine){
+    if (!aLine.contains(":")){
+      return "";
+    }
     //use a second Scanner to parse the content of each line
     Scanner scanner = new Scanner(aLine);
 
