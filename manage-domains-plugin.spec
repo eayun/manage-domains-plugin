@@ -32,6 +32,7 @@ mvn clean package war:war
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/ovirt-engine/ui-plugins/
+mkdir -p %{buildroot}/usr/share/ovirt-engine/setup/plugins/ovirt-engine-setup/engine-manage-domains-plugin/
 mkdir -p %{buildroot}/usr/share/engine-manage-domains/deployments/
 mkdir -p %{buildroot}/etc/httpd/conf.d/
 mkdir -p %{buildroot}/etc/engine-manage-domains
@@ -39,6 +40,7 @@ mkdir -p %{buildroot}/usr/lib/systemd/system
 mkdir -p %{buildroot}/var/log/engine-manage-domains
 mkdir -p %{buildroot}/usr/sbin/
 cp -r UIPlugin/* %{buildroot}/usr/share/ovirt-engine/ui-plugins/
+cp -r otopi/* %{buildroot}/usr/share/ovirt-engine/setup/plugins/ovirt-engine-setup/engine-manage-domains-plugin/
 cp Servlet/engine-manage-domains/target/engineManageDomains.war %{buildroot}/usr/share/engine-manage-domains/deployments/
 cp ovirt-plugin-emd.conf %{buildroot}/etc/httpd/conf.d/
 cp engine-manage-domains.service %{buildroot}/usr/lib/systemd/system
@@ -63,6 +65,7 @@ rm -rf %{buildroot}
 %attr(0644,root,root) /usr/lib/systemd/system/engine-manage-domains.service
 %attr(0755,root,root) /usr/sbin/engine-manage-domains-setup
 /usr/share/ovirt-engine/ui-plugins/
+/usr/share/ovirt-engine/setup/plugins/ovirt-engine-setup/engine-manage-domains-plugin/
 /usr/share/engine-manage-domains/
 /var/log/engine-manage-domains/
 /etc/engine-manage-domains/
