@@ -7,7 +7,7 @@
   // Define event handler functions for later invocation by UI plugin infrastructure
   app.factory('translationService', ['$window', '$filter', 'english', 'chinese', function ($window, $filter, english, chinese) {
 
-    var langKey = $filter('limitTo')($window.navigator.userLanguage || $window.navigator.language, 2);
+    var langKey = top.location.href.split("=")[1].split("_")[0];
 
     return {
       getTranslation: function ($scope) {
