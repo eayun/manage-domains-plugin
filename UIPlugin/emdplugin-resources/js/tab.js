@@ -165,18 +165,6 @@
       var tr = translationService.translate();
 
       $scope.openAddDialog = function() {
-         var api = parent.pluginApi('EMDPlugin');
-         var lang = top.location.href.split("=")[1].split("#")[0];
-         var userNameWithDomain = api.loginUserName();
-         if(userNameWithDomain != "admin@internal-authz"){
-             if(lang == 'zh_CN'){
-                 alert("您没有权限执行此功能！！！");
-             }
-             else{
-                 alert("You have no the permission of this function!");
-             }
-             return ;
-         }
          dialogManager.showAddDialog();
       };
 
