@@ -73,6 +73,30 @@
       return {
          // Show the Add Dialog Window
          showAddDialog: function () {
+            var language = top.location.href.split("=")[1].split("#")[0];
+            if(language == 'zh_CN'){
+            pluginApi.showDialog('添加域', 'add-dialog', urlUtil.relativeUrl('add.html'), '780px', '650px',
+               {
+                  buttons: [
+                     {
+                        label: '取消',
+                        onClick: function() {
+                          pluginApi.closeDialog('add-dialog');
+                        }
+                     },
+                     {
+                        label: '确认',
+                        onClick: function() {
+                          messager.sendMessage('submit','add-dialog');
+                        }
+                      }
+                  ],
+                  resizeEnabled: true,
+                  closeIconVisible: false,
+                  closeOnEscKey: false
+               }
+            );
+           }else{
             pluginApi.showDialog('Add Domain', 'add-dialog', urlUtil.relativeUrl('add.html'), '780px', '650px',
                {
                   buttons: [
@@ -94,6 +118,7 @@
                   closeOnEscKey: false
                }
             );
+           }
          },
 
          // Show the Edit Dialog Window
