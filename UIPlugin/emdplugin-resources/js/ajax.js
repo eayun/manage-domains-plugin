@@ -15,7 +15,8 @@
     return {
 
       list: function(){
-        var urlReq = URL + '/domains/';
+        var getTimestamp=new Date().getTime();
+        var urlReq = URL + '/domains/'+"?timestamp="+getTimestamp;
         console.log('API Request: GET - ' + urlReq);
 
         $http.get(urlReq).
