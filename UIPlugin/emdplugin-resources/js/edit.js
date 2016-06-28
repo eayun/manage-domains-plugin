@@ -47,6 +47,9 @@
 
      $scope.submit = function() {
         // First verify the form
+
+        var lang = top.location.href.split("=")[1].split("#")[0];
+
         if($scope.editForm.$valid){
 
           $scope.toggleLoadingModal();
@@ -63,7 +66,12 @@
 
           }
         } else {
-           $window.alert("Your form is not correct ! Please enter a password.");
+           if(lang == 'zh_CN'){
+              $window.alert("您的格式错误！ 请输入密码！");
+           }
+           else{
+              $window.alert("Your form is not correct ! Please enter a password.");
+           }
         }
 
       };
