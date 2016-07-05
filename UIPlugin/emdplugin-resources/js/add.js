@@ -45,6 +45,9 @@
 
      $scope.submit = function() {
         // First verify the form
+
+        var lang = top.location.href.split("=")[1].split("#")[0];
+
         if($scope.addForm.$valid){
 
           $scope.toggleLoadingModal();
@@ -60,7 +63,12 @@
 
           }
         } else {
-           $window.alert("Domain, Provider, User and Password are requiered input. Please fill them correctly !");
+           if(lang == 'zh_CN'){
+              $window.alert("需要填写域名，提供商，用户和密码，请填写正确！");
+           }
+           else{
+              $window.alert("Domain, Provider, User and Password are requiered input. Please fill them correctly !");
+           }
         }
 
       };
