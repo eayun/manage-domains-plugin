@@ -85,7 +85,7 @@
                         }
                      },
                      {
-                        label: '确认',
+                        label: '确定',
                         onClick: function() {
                           messager.sendMessage('submit','add-dialog');
                         }
@@ -123,6 +123,35 @@
 
          // Show the Edit Dialog Window
          showEditDialog: function (domain) {
+            var language = top.location.href.split("=")[1].split("#")[0];
+            if(language == 'zh_CN'){
+            var dialogName = "编辑 " + domain.domain;
+
+            cache.setData('DOMAIN_TO_EDIT', domain);
+
+            pluginApi.showDialog( dialogName, 'edit-dialog', urlUtil.relativeUrl('edit.html'), '780px', '650px',
+               {
+                  buttons: [
+                     {
+                        label: '取消',
+                        onClick: function() {
+                           pluginApi.closeDialog('edit-dialog');
+                           cache.removeData('DOMAIN_TO_EDIT');
+                        }
+                     },
+                     {
+                        label: '确定',
+                        onClick: function() {
+                          messager.sendMessage('submit','edit-dialog');
+                        }
+                      }
+                  ],
+                  resizeEnabled: true,
+                  closeIconVisible: false,
+                  closeOnEscKey: false
+               }
+            );
+           }else{
             var dialogName = "Edit " + domain.domain;
 
             cache.setData('DOMAIN_TO_EDIT', domain);
@@ -148,7 +177,8 @@
                   closeIconVisible: false,
                   closeOnEscKey: false
                }
-            );
+            );          
+           }
          },
 
          // Show the Remove Dialog Window
